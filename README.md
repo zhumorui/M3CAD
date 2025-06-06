@@ -50,7 +50,12 @@ python m3cad/uniad/analysis_tools/visualize/rerun_visualizer.py \
 - [ ] support VAD
 - [ ] support UniV2X
 
+## 📬 Contact
 
+For questions, feedback, or collaborations, feel free to contact:
+
+- **Morui Zhu**: [moruizhu@my.unt.edu](mailto:moruizhu@my.unt.edu)  
+- **Qing Yang**: [Qing.Yang@unt.edu](mailto:Qing.Yang@unt.edu)
 
 ## 🙏 Citation 
 
