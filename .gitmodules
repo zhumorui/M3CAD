@@ -1,0 +1,8 @@
+[submodule "submodules/nuscenes-devkit"]
+	path = submodules/nuscenes-devkit
+	url = git@github.com:zhumorui/nuscenes-devkit.git
+	branch = master
+[submodule "submodules/OpenCOOD"]
+	path = submodules/OpenCOOD
+	url = git@github.com:zhumorui/OpenCOOD.git
+	branch = main
