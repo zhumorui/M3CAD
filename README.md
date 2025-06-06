@@ -1,11 +1,7 @@
 <h1 align="center">M3CAD: Towards Generic Cooperative Autonomous Driving Benchmark</h1>
 
-<div align="center">
-  <video width="800" controls>
-    <source src="https://zhumorui.github.io/m3cad/video/m3cad_demo_video_h264.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+
+https://private-user-images.githubusercontent.com/54446407/452126579-086f8291-e08a-4d7c-8204-1c84389ae23f
 
 
 ## Overview
