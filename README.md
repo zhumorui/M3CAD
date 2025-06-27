@@ -3,6 +3,13 @@
 
 https://private-user-images.githubusercontent.com/54446407/452126579-086f8291-e08a-4d7c-8204-1c84389ae23f
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2505.06746"><img src="https://img.shields.io/badge/Paper-ArXiv-b31b1b.svg" alt="paper"></a>
+  <a href="https://zhumorui.github.io/m3cad/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="project page"></a>
+  <a href="https://drive.google.com/drive/u/1/folders/1tsuc7tJ9I8G1CWkh3G1ksOKbindNJtlt"><img src="https://img.shields.io/badge/Dataset-GDrive-yellow.svg" alt="dataset"></a>
+  <a href="https://github.com/ZhuMorui/M3CAD/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ZhuMorui/M3CAD.svg" alt="license"></a>
+</p>
+
 
 ## Overview
 M³CAD is currently the most comprehensive benchmark for both single-vehicle and cooperative autonomous driving research, supporting multiple tasks like object detection and tracking, mapping, motion forecasting, occupancy, and path planning, while supporting more realistic vehicle movements and interactions in complex environments.
