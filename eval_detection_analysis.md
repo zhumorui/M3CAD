@@ -92,6 +92,55 @@ sortind = [i for (v, i) in sorted((v, i) for (i, v) in enumerate(pred_confs))][:
 2. **score_thresh = 0.2**：在模型中的另一个分数阈值
 3. **可视化阈值 = 0.25**：在可视化工具中使用（`m3cad/uniad/analysis_tools/visualize/run.py`）
 
+## 为什么计算AP时不使用score进行过滤
+
+基于对代码的分析和AP计算原理的理解，以下是为什么设置`score_threshold=0.0`（不进行分数过滤）的原因：
+
+### 1. AP计算的本质
+
+**AP（Average Precision）是通过在所有可能的recall阈值上计算precision来得到的**。关键特点：
+
+- AP需要评估模型在**不同置信度阈值**下的表现
+- AP通过对predictions按置信度**排序**，然后在不同cutoff点计算precision和recall
+- 如果预先用固定阈值过滤，会**丢失低置信度但可能正确的预测**
+
+### 2. 预过滤的问题
+
+如果使用score_threshold进行预过滤：
+
+```python
+# 如果使用score_threshold > 0
+filtered_predictions = predictions[scores > score_threshold]
+```
+
+这会导致：
+- **信息丢失**：低于阈值但实际正确的预测被完全排除
+- **AP计算偏差**：无法完整评估模型在所有recall水平的性能
+- **不公平比较**：不同阈值设置会产生不可比较的AP值
+
+### 3. 正确的AP计算流程
+
+标准的AP计算应该：
+1. **保留所有预测**（设置score_threshold=0.0）
+2. **按置信度排序**所有预测
+3. **依次计算**不同cutoff点的precision和recall
+4. **积分计算**precision-recall曲线下的面积
+
+### 4. Top-K过滤的合理性
+
+使用`max_num=300`进行top-k过滤是合理的，因为：
+- **保持信息完整性**：保留了最有价值的300个预测
+- **计算效率**：限制了计算量
+- **评估一致性**：不同模型都使用相同的top-k限制
+- **实际意义**：实际应用中很少需要超过300个检测结果
+
+### 5. 与标准评估协议一致
+
+这种设计与标准目标检测评估协议一致：
+- **COCO评估**：不使用score阈值预过滤
+- **PASCAL VOC**：同样不进行预过滤
+- **nuScenes**：遵循相同原则
+
 ## 结论
 
 **代码在eval detection时，对boxes做了track_score的过滤再计算AP，而不是只过滤距离等信息。**
@@ -102,5 +151,7 @@ sortind = [i for (v, i) in sorted((v, i) for (i, v) in enumerate(pred_confs))][:
 - AP计算基于这些`detection_score`进行排序和匹配
 - 因此track_score直接影响AP的计算结果
 - **默认情况下score_threshold=0.0，主要通过top-k（max_num=300）进行过滤**
+
+**不使用score阈值过滤的原因是为了确保AP计算的完整性和准确性，这是标准目标检测评估的最佳实践。**
 
 这意味着track_score不仅用于tracking，也直接影响detection的评估指标。
