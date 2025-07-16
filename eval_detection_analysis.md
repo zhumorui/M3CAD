@@ -71,6 +71,27 @@ sortind = [i for (v, i) in sorted((v, i) for (i, v) in enumerate(pred_confs))][:
 4. **NMS过滤**：如果启用NMS
 5. **中心范围过滤**：`post_center_range`过滤
 
+## 默认阈值设置
+
+### Score Threshold默认值
+
+在`mmcv/core/bbox/coder/detr3d_track_coder.py`中：
+- **默认score_threshold = 0.2**
+
+但在实际配置中（`mmcv/models/detectors/uniad_track.py`和`univ2x_track.py`）：
+- **配置中的score_threshold = 0.0**
+
+这意味着默认情况下：
+- 代码中的默认值是0.2
+- 但实际运行时配置设置为0.0，即**不进行track score阈值过滤**
+- 只通过top-k选择（max_num=300）来限制boxes数量
+
+### 其他相关阈值
+
+1. **max_num = 300**：最多保留300个boxes
+2. **score_thresh = 0.2**：在模型中的另一个分数阈值
+3. **可视化阈值 = 0.25**：在可视化工具中使用（`m3cad/uniad/analysis_tools/visualize/run.py`）
+
 ## 结论
 
 **代码在eval detection时，对boxes做了track_score的过滤再计算AP，而不是只过滤距离等信息。**
@@ -80,5 +101,6 @@ sortind = [i for (v, i) in sorted((v, i) for (i, v) in enumerate(pred_confs))][:
 - 在生成评估用的detection boxes时，`detection_score`使用的是`track_scores`
 - AP计算基于这些`detection_score`进行排序和匹配
 - 因此track_score直接影响AP的计算结果
+- **默认情况下score_threshold=0.0，主要通过top-k（max_num=300）进行过滤**
 
 这意味着track_score不仅用于tracking，也直接影响detection的评估指标。
