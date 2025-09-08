@@ -12,6 +12,11 @@ https://private-user-images.githubusercontent.com/54446407/452126579-086f8291-e0
 ## Overview
 M³CAD is currently the most comprehensive benchmark for both single-vehicle and cooperative autonomous driving research, supporting multiple tasks like object detection and tracking, mapping, motion forecasting, occupancy, and path planning, while supporting more realistic vehicle movements and interactions in complex environments.
 
+## 📢 Changelog
+
+### [2025-09-08] - Multi-Camera Dataset Support
+- ✅ **Released 6-camera dataset** with layout identical to nuScenes setup to validate the model on real-world challenges.
+- ✅ **Provided replay scripts** with customizable camera positions and additional sensor support.
 
 ## 🚀 Getting Started
 
