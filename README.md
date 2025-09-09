@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2505.06746"><img src="https://img.shields.io/badge/Paper-ArXiv-b31b1b.svg" alt="paper"></a>
   <a href="https://zhumorui.github.io/m3cad/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="project page"></a>
-  <a href="https://drive.google.com/drive/u/1/folders/1tsuc7tJ9I8G1CWkh3G1ksOKbindNJtlt"><img src="https://img.shields.io/badge/Dataset-GDrive-yellow.svg" alt="dataset"></a>
+  <a href="https://drive.google.com/drive/folders/1K4gA79MLWn5xc8NzPs8l89PUvrWWFTeV?usp=sharing"><img src="https://img.shields.io/badge/Dataset-GDrive-yellow.svg" alt="dataset"></a>
   <a href="https://github.com/ZhuMorui/M3CAD/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ZhuMorui/M3CAD.svg" alt="license"></a>
 </p>
 
